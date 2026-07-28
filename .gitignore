@@ -1,3 +1,8 @@
 *.exe
 *.cs
 gen_*
+node_modules/
+www/
+android/app/build/
+android/.gradle/
+android/local.properties
