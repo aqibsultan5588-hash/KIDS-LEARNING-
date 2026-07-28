@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kids Learning Game</title>
+<link rel="icon" type="image/png" href="ICION.png">
+<link rel="apple-touch-icon" href="ICION.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+  <header id="topBar">
+    <button id="backBtn" class="icon-btn" onclick="goBack()"><img src="assets/icons/back.svg" alt="Back" class="icon-svg"></button>
+    <h1 id="topTitle">Kids Learning</h1>
+    <button id="muteBtn" class="icon-btn" onclick="toggleMute()"><img src="assets/icons/sound-on.svg" alt="Sound" class="icon-svg" id="muteIcon"></button>
+  </header>
+
+  <div id="confettiContainer"></div>
+
+  <!-- HOME VIEW -->
+  <div id="viewHome" class="view active">
+    <div class="home-bg"></div>
+    <img src="assets/images/background.png" alt="" class="home-bg-img">
+    <div class="home-content">
+      <div class="logo-area">
+        <img src="assets/images/logo.png" alt="Kids Learning" class="logo-img">
+        <h1 class="app-title">Kids Learning</h1>
+        <p class="app-subtitle">Play & Learn Together!</p>
+      </div>
+      <div class="home-menu">
+        <button class="home-btn" onclick="navigateTo('learning')" style="background:linear-gradient(135deg,#FF6B6B,#ee5a24)">
+          <img src="assets/icons/start.png" alt="" class="btn-icon"> Start Learning
+        </button>
+        <button class="home-btn" onclick="navigateTo('minigames')" style="background:linear-gradient(135deg,#48dbfb,#0abde3)">
+          <img src="assets/icons/games.png" alt="" class="btn-icon"> Mini Games
+        </button>
+        <button class="home-btn" onclick="navigateTo('progress')" style="background:linear-gradient(135deg,#ff9ff3,#f368e0)">
+          <img src="assets/icons/progress.png" alt="" class="btn-icon"> Progress
+        </button>
+        <button class="home-btn" onclick="navigateTo('settings')" style="background:linear-gradient(135deg,#feca57,#ff9f43)">
+          <img src="assets/icons/settings.png" alt="" class="btn-icon"> Settings
+        </button>
+        <button class="home-btn" onclick="navigateTo('about')" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">
+          <img src="assets/icons/about.png" alt="" class="btn-icon"> About
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEARNING MODULES VIEW -->
+  <div id="viewLearning" class="view">
+    <h2 class="view-title">Choose What to Learn</h2>
+    <div class="module-grid">
+      <div class="module-card" onclick="openModule('alphabet')">
+        <img src="assets/icons/alphabet.png" alt="" class="module-icon-img">
+        <span class="module-name">Alphabet</span>
+      </div>
+      <div class="module-card" onclick="openModule('numbers')">
+        <img src="assets/icons/numbers.png" alt="" class="module-icon-img">
+        <span class="module-name">Numbers</span>
+      </div>
+      <div class="module-card" onclick="openModule('colors')">
+        <img src="assets/icons/colors.png" alt="" class="module-icon-img">
+        <span class="module-name">Colors</span>
+      </div>
+      <div class="module-card" onclick="openModule('shapes')">
+        <img src="assets/icons/shapes.png" alt="" class="module-icon-img">
+        <span class="module-name">Shapes</span>
+      </div>
+      <div class="module-card" onclick="openModule('animals')">
+        <img src="assets/icons/animals.png" alt="" class="module-icon-img">
+        <span class="module-name">Animals</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALPHABET MODULE -->
+  <div id="moduleAlphabet" class="view module-view">
+    <h2 class="view-title">Alphabet</h2>
+    <div class="learning-container">
+      <div class="letter-display">
+        <div class="letter-main" id="alphabetLetter">A</div>
+        <div class="letter-case" id="alphabetCase">a</div>
+      </div>
+      <div class="letter-word-area">
+        <span class="letter-word-label">Word:</span>
+        <span class="letter-word" id="alphabetWord">Apple</span>
+      </div>
+      <div class="letter-picture" id="alphabetPicture"><span class="picture-emoji">&#x1F34E;</span></div>
+      <button class="speak-btn" onclick="speakLetter()"><img src="assets/icons/sound-on.svg" alt="" class="btn-icon-sm"> Listen</button>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="prevLetter()"><img src="assets/icons/back.svg" alt="" class="btn-icon-sm"> Previous</button>
+        <button class="nav-btn" onclick="nextLetter()">Next <img src="assets/icons/back.svg" alt="" class="btn-icon-sm flip-h"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUMBERS MODULE -->
+  <div id="moduleNumbers" class="view module-view">
+    <h2 class="view-title">Numbers</h2>
+    <div class="learning-container">
+      <div class="number-display">
+        <div class="number-main" id="numberDisplay">1</div>
+        <div class="number-word" id="numberWord">One</div>
+      </div>
+      <div class="number-count-area" id="numberCountArea"></div>
+      <button class="speak-btn" onclick="speakNumber()"><img src="assets/icons/sound-on.svg" alt="" class="btn-icon-sm"> Listen</button>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="prevNumber()"><img src="assets/icons/back.svg" alt="" class="btn-icon-sm"> Previous</button>
+        <button class="nav-btn" onclick="nextNumber()">Next <img src="assets/icons/back.svg" alt="" class="btn-icon-sm flip-h"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLORS MODULE -->
+  <div id="moduleColors" class="view module-view">
+    <h2 class="view-title">Colors</h2>
+    <div class="colors-grid" id="colorsGrid"></div>
+  </div>
+
+  <!-- SHAPES MODULE -->
+  <div id="moduleShapes" class="view module-view">
+    <h2 class="view-title">Shapes</h2>
+    <div class="shapes-grid" id="shapesGrid"></div>
+  </div>
+
+  <!-- ANIMALS MODULE -->
+  <div id="moduleAnimals" class="view module-view">
+    <h2 class="view-title">Animals</h2>
+    <div class="animals-grid" id="animalsGrid"></div>
+  </div>
+
+  <!-- MINI GAMES VIEW -->
+  <div id="viewMinigames" class="view">
+    <h2 class="view-title">Mini Games</h2>
+    <div class="games-grid" id="gamesGrid"></div>
+  </div>
+
+  <!-- GAME: LETTER MATCHING -->
+  <div id="gameLetterMatch" class="view game-view">
+    <h2 class="view-title">Letter Matching</h2>
+    <p class="game-instruction">Match the uppercase letter to its lowercase pair!</p>
+    <div class="game-question" id="lmQuestion">A</div>
+    <div class="game-options" id="lmOptions"></div>
+    <div class="game-score">Score: <span id="lmScore">0</span></div>
+  </div>
+
+  <!-- GAME: NUMBER MATCHING -->
+  <div id="gameNumberMatch" class="view game-view">
+    <h2 class="view-title">Number Matching</h2>
+    <p class="game-instruction">Count the objects and pick the right number!</p>
+    <div class="game-question" id="nmCount">&#x1F7E8;&#x1F7E8;&#x1F7E8;</div>
+    <div class="game-options" id="nmOptions"></div>
+    <div class="game-score">Score: <span id="nmScore">0</span></div>
+  </div>
+
+  <!-- GAME: COLOR MATCHING -->
+  <div id="gameColorMatch" class="view game-view">
+    <h2 class="view-title">Color Matching</h2>
+    <p class="game-instruction">Tap the color that matches the name!</p>
+    <div class="game-question" id="cmQuestion">Red</div>
+    <div class="game-options" id="cmOptions"></div>
+    <div class="game-score">Score: <span id="cmScore">0</span></div>
+  </div>
+
+  <!-- GAME: SHAPE MATCHING -->
+  <div id="gameShapeMatch" class="view game-view">
+    <h2 class="view-title">Shape Matching</h2>
+    <p class="game-instruction">Find the shape that matches the name!</p>
+    <div class="game-question" id="smQuestion">&#x2B1C;</div>
+    <div class="game-options" id="smOptions"></div>
+    <div class="game-score">Score: <span id="smScore">0</span></div>
+  </div>
+
+  <!-- GAME: ANIMAL MATCHING -->
+  <div id="gameAnimalMatch" class="view game-view">
+    <h2 class="view-title">Animal Matching</h2>
+    <p class="game-instruction">Find the animal that matches the name!</p>
+    <div class="game-question" id="amQuestion">&#x1F436;</div>
+    <div class="game-options" id="amOptions"></div>
+    <div class="game-score">Score: <span id="amScore">0</span></div>
+  </div>
+
+  <!-- GAME: BALLOON POP -->
+  <div id="gameBalloonPop" class="view game-view">
+    <h2 class="view-title">Balloon Pop</h2>
+    <p class="game-instruction">Pop the balloons! Count how many you pop!</p>
+    <div class="balloon-area" id="balloonArea"></div>
+    <div class="game-score">Popped: <span id="bpScore">0</span></div>
+  </div>
+
+  <!-- GAME: MEMORY CARD -->
+  <div id="gameMemory" class="view game-view">
+    <h2 class="view-title">Memory Cards</h2>
+    <p class="game-instruction">Find matching pairs!</p>
+    <div class="memory-grid" id="memoryGrid"></div>
+    <div class="game-score">Matches: <span id="memScore">0</span> | Moves: <span id="memMoves">0</span></div>
+    <button class="nav-btn" onclick="initMemoryGame()">Restart</button>
+  </div>
+
+  <!-- GAME: FIND CORRECT PICTURE -->
+  <div id="gameFindPicture" class="view game-view">
+    <h2 class="view-title">Find the Correct Picture</h2>
+    <p class="game-instruction">Which one is <span id="fpTarget">Apple</span>?</p>
+    <div class="game-options" id="fpOptions"></div>
+    <div class="game-score">Score: <span id="fpScore">0</span></div>
+  </div>
+
+  <!-- GAME: DRAG & DROP PUZZLE -->
+  <div id="gamePuzzle" class="view game-view">
+    <h2 class="view-title">Drag & Drop Puzzle</h2>
+    <p class="game-instruction">Drag the pieces to complete the picture!</p>
+    <div class="puzzle-container">
+      <div class="puzzle-board" id="puzzleBoard"></div>
+      <div class="puzzle-pieces" id="puzzlePieces"></div>
+    </div>
+    <div class="game-score">Score: <span id="pzScore">0</span></div>
+  </div>
+
+  <!-- GAME: SIMPLE QUIZ -->
+  <div id="gameQuiz" class="view game-view">
+    <h2 class="view-title">Simple Quiz</h2>
+    <p class="game-instruction" id="quizQuestion">What color is the sky?</p>
+    <div class="game-options" id="quizOptions"></div>
+    <div class="game-score">Score: <span id="quizScore">0</span> / <span id="quizTotal">0</span></div>
+  </div>
+
+  <!-- PROGRESS VIEW -->
+  <div id="viewProgress" class="view">
+    <h2 class="view-title">My Progress</h2>
+    <div class="progress-stats">
+      <div class="stat-card">
+        <img src="assets/icons/progress.png" alt="" class="stat-icon-img">
+        <span class="stat-label">Learning</span>
+        <span class="stat-value" id="pctLearning">0%</span>
+      </div>
+      <div class="stat-card">
+        <img src="assets/icons/games.png" alt="" class="stat-icon-img">
+        <span class="stat-label">Games Done</span>
+        <span class="stat-value" id="pctGames">0</span>
+      </div>
+      <div class="stat-card">
+        <img src="assets/icons/star.svg" alt="" class="stat-icon-img">
+        <span class="stat-label">Stars</span>
+        <span class="stat-value" id="pctStars">0</span>
+      </div>
+      <div class="stat-card">
+        <img src="assets/icons/coin.svg" alt="" class="stat-icon-img">
+        <span class="stat-label">Coins</span>
+        <span class="stat-value" id="pctCoins">0</span>
+      </div>
+    </div>
+    <h3>Achievements</h3>
+    <div class="achievement-list" id="achievementList"></div>
+  </div>
+
+  <!-- SETTINGS VIEW -->
+  <div id="viewSettings" class="view">
+    <h2 class="view-title">Settings</h2>
+    <div class="settings-list">
+      <div class="setting-item">
+        <span><img src="assets/icons/sound-on.svg" alt="" class="btn-icon-sm"> Music</span>
+        <label class="toggle"><input type="checkbox" id="musicToggle" checked onchange="saveSettings()"><span class="slider"></span></label>
+      </div>
+      <div class="setting-item">
+        <span><img src="assets/icons/sound-on.svg" alt="" class="btn-icon-sm"> Sound Effects</span>
+        <label class="toggle"><input type="checkbox" id="sfxToggle" checked onchange="saveSettings()"><span class="slider"></span></label>
+      </div>
+      <div class="setting-item">
+        <span><img src="assets/icons/settings.png" alt="" class="btn-icon-sm"> Difficulty</span>
+        <select id="difficultySelect" onchange="saveSettings()">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <button class="danger-btn" onclick="resetProgress()"><img src="assets/icons/badge.svg" alt="" class="btn-icon-sm"> Reset Progress</button>
+    </div>
+  </div>
+
+  <!-- ABOUT VIEW -->
+  <div id="viewAbout" class="view">
+    <h2 class="view-title">About</h2>
+    <div class="about-content">
+      <img src="assets/icons/about.png" alt="" class="about-icon-img">
+      <h3>Kids Learning Game</h3>
+      <p>Version 1.0</p>
+      <p>A fun educational game for kids to learn alphabets, numbers, colors, shapes, and animals through interactive lessons and mini games.</p>
+      <p>Features:</p>
+      <ul>
+        <li>Alphabet Learning A-Z</li>
+        <li>Numbers 1-100</li>
+        <li>Colors & Shapes</li>
+        <li>Animals & Sounds</li>
+        <li>10 Mini Games</li>
+        <li>Rewards & Achievements</li>
+      </ul>
+      <p>Made with &#x2764;&#xFE0F; for kids everywhere!</p>
+    </div>
+  </div>
+
+  <!-- SUCCESS OVERLAY -->
+  <div id="successOverlay" class="overlay" onclick="closeOverlay()">
+    <div class="overlay-content">
+      <img src="assets/icons/trophy.png" alt="" class="overlay-icon-img">
+      <h2 id="overlayTitle">Great Job!</h2>
+      <p id="overlayMsg">You earned a star!</p>
+      <div class="overlay-rewards" id="overlayRewards"></div>
+      <button class="nav-btn" onclick="closeOverlay()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
