@@ -25,11 +25,11 @@ jobs:
       - name: Install Capacitor
         run: npm install
 
-      - name: Copy web files to www
+      - name: Copy web files to android assets
         run: |
-          mkdir -p www
-          cp index.html style.css script.js ICION.png www/
-          cp -r assets www/
+          mkdir -p android/app/src/main/assets/public
+          cp index.html style.css script.js ICION.png android/app/src/main/assets/public/
+          cp -r assets android/app/src/main/assets/public/
 
       - name: Generate release keystore
         run: |
@@ -37,9 +37,6 @@ jobs:
             -alias kidslearning -keyalg RSA -keysize 2048 -validity 10000 \
             -storepass opencode123 -keypass opencode123 \
             -dname "CN=KidsLearning, OU=Dev, O=KidsLearning, L=City, S=State, C=PK"
-
-      - name: Sync Capacitor
-        run: npx cap sync android
 
       - name: Build Release APK
         run: |
