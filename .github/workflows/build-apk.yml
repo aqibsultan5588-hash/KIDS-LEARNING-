@@ -31,17 +31,24 @@ jobs:
           cp index.html style.css script.js ICION.png www/
           cp -r assets www/
 
+      - name: Generate release keystore
+        run: |
+          keytool -genkey -v -keystore android/release.keystore \
+            -alias kidslearning -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass opencode123 -keypass opencode123 \
+            -dname "CN=KidsLearning, OU=Dev, O=KidsLearning, L=City, S=State, C=PK"
+
       - name: Sync Capacitor
         run: npx cap sync android
 
-      - name: Build APK
+      - name: Build Release APK
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleRelease
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: android/app/build/outputs/apk/debug/*.apk
+          name: app-release
+          path: android/app/build/outputs/apk/release/*.apk
