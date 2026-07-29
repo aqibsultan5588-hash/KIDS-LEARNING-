@@ -343,7 +343,6 @@ const DATA = {
 // ============================================================
 // LANGUAGE SYSTEM
 // ============================================================
-let currentLang = 'en';
 
 const LANG = {
   en: {
@@ -503,179 +502,11 @@ const LANG = {
     achBadgeCollector: 'Badge Collector',
     tttYourTurn: 'Your turn (X)!',
     tttComputerTurn: 'Your turn (X)!'
-  },
-
-  ur: {
-    appTitle: 'بچوں کی سیکھائی',
-    appSubtitle: 'کھیلیں اور سیکھیں ایک ساتھ!',
-    startLearning: 'سیکھنا شروع کریں',
-    miniGames: 'چھوٹے کھیل',
-    progress: 'ترقی',
-    settings: 'سیٹنگز',
-    about: 'ہمارے بارے میں',
-    chooseWhatToLearn: 'سیکھنے کے لیے منتخب کریں',
-    alphabet: 'حروف تہجی',
-    numbers: 'نمبر',
-    colors: 'رنگ',
-    shapes: 'شکلیں',
-    animals: 'جانور',
-    fruitsAndVeg: 'پھل اور سبزیاں',
-    fruitsAndVegetables: 'پھل اور سبزیاں',
-    bodyParts: 'جسم کے اعضاء',
-    transport: 'نقل و حمل',
-    daysAndMonths: 'دن اور مہینے',
-    seasons: 'موسم',
-    seasonsAndWeather: 'موسم اور موسم',
-
-    wordLabel: 'لفظ:',
-    meaningLabel: 'معنی:',
-    listen: 'سنیں',
-    previous: 'پچھلا',
-    next: 'اگلا',
-    score: 'اسکور',
-    matches: 'مطابقت',
-    moves: 'چالیں',
-    popped: 'پھٹے',
-    wins: 'جیت',
-    losses: 'ہار',
-    connected: 'منسلک',
-    restart: 'دوبارہ شروع',
-    clear: 'صاف کریں',
-    save: 'محفوظ کریں',
-    days: 'دن',
-    months: 'مہینے',
-    letterMatching: 'حرف کی مطابقت',
-    letterMatchInstr: 'بڑے حرف کو چھوٹے حرف سے ملائیں!',
-    numberMatching: 'نمبر کی مطابقت',
-    numberMatchInstr: 'چیزیں گنیں اور صحیح نمبر چنیں!',
-    colorMatching: 'رنگ کی مطابقت',
-    colorMatchInstr: 'نام سے ملنے والا رنگ دبائیں!',
-    shapeMatching: 'شکل کی مطابقت',
-    shapeMatchInstr: 'نام سے ملنے والی شکل تلاش کریں!',
-    animalMatching: 'جانور کی مطابقت',
-    animalMatchInstr: 'نام سے ملنے والا جانور تلاش کریں!',
-    balloonPop: 'غبارہ پھاڑنا',
-    balloonPopInstr: 'غبارے پھاڑیں! گنیں کتنے پھاڑے!',
-    memoryCards: 'میموری کارڈز',
-    memoryInstr: 'جوڑے تلاش کریں!',
-    findPicture: 'صحیح تصویر تلاش کریں',
-    whichOneIs: 'کون سا ہے',
-    dragDropPuzzle: 'گھسیٹیں اور چھوڑیں پہیلی',
-    puzzleInstr: 'ٹکڑوں کو گھسیٹ کر تصویر مکمل کریں!',
-    simpleQuiz: 'سادہ کوئز',
-    mathOperations: 'ریاضی کے عمل',
-    wordSpelling: 'لفظ کی ہجے',
-    ticTacToe: 'ٹک ٹیک ٹو',
-    ticTacToeInstr: 'آپ X ہیں، کمپیوٹر O ہے!',
-    yourTurn: 'آپ کی باری!',
-    computerThinking: 'کمپیوٹر سوچ رہا...',
-    youWin: 'آپ جیت گئے!',
-    computerWins: 'کمپیوٹر جیت گیا!',
-    itsADraw: 'مقابلہ برابر!',
-    connectDots: 'نقطے جوڑیں',
-    connectDotsInstr: 'ترتیب سے نمبروں پر ٹیپ کریں!',
-    coloringBook: 'رنگ بھرنے کی کتاب',
-    coloringInstr: 'رنگ چنیں اور پینٹ کریں!',
-    clockReading: 'گھڑی پڑھنا',
-    clockInstr: 'کیا وقت ہوا ہے؟',
-    myProgress: 'میری ترقی',
-    learning: 'سیکھنا',
-    gamesDone: 'کھیل مکمل',
-    stars: 'ستارے',
-    coins: 'سکے',
-    achievements: 'کامیابیاں',
-    music: 'موسیقی',
-    soundEffects: 'صوتی اثرات',
-    difficulty: 'مشکل',
-    easy: 'آسان',
-    medium: 'درمیانہ',
-    hard: 'مشکل',
-    language: 'زبان',
-    english: 'انگریزی',
-    urdu: 'اردو',
-    darkMode: 'ڈارک موڈ',
-    resetProgress: 'ترقی دوبارہ سیٹ کریں',
-    resetConfirm: 'ساری ترقی دوبارہ سیٹ کریں؟ یہ واپس نہیں ہو سکتی!',
-    aboutTitle: 'بچوں کی سیکھائی کا کھیل',
-    version: 'ورژن',
-    aboutDesc: 'بچوں کے لیے ایک تفریحی تعلیمی کھیل جو انٹرایکٹو اسباق اور منی گیمز کے ذریعے حروف تہجی، نمبر، رنگ، شکلیں اور جانور سکھاتا ہے۔',
-    features: 'خصوصیات:',
-    featAlphabet: 'حروف تہجی سیکھنا A-Z',
-    featUrdu: 'اردو سیکھنا (اردو)',
-    featNumbers: 'نمبر 1-100',
-    featColorsShapes: 'رنگ اور شکلیں',
-    featAnimalsFruits: 'جانور، پھل اور سبزیاں',
-    featBodyTransport: 'جسم کے اعضاء اور نقل و حمل',
-    featDaysSeasons: 'دن، مہینے اور موسم',
-    featGames: '16 منی گیمز',
-    featMathSpelling: 'ریاضی کے عمل اور ہجے',
-    featTTTConnect: 'ٹک ٹیک ٹو اور نقطے جوڑیں',
-    featColoringClock: 'رنگ بھرنے کی کتاب اور گھڑی پڑھنا',
-    featDarkMode: 'ڈارک موڈ اور انعامات',
-    madeWithLove: 'سے بنایا گیا',
-    forKids: 'دنیا بھر کے بچوں کے لیے!',
-    greatJob: 'بہت اچھے!',
-    youEarnedStar: 'آپ نے ایک ستارہ جیتا!',
-    continue: 'جاری رکھیں',
-    spellTarget: 'لفظ لکھیں!',
-    spellTheWord: 'لکھیں:',
-    scoreLabel: 'اسکور:',
-    rewardLetterChamp: 'حرف چیمپئن!',
-    rewardLetterMsg: 'آپ نے 10 حرف ملائے!',
-    rewardNumberStar: 'نمبر اسٹار!',
-    rewardNumberMsg: 'آپ نے 10 راؤنڈ گنے!',
-    rewardAnimalExpert: 'جانور ماہر!',
-    rewardAnimalMsg: 'آپ سب جانوروں کو جانتے ہیں!',
-    rewardBalloonPopper: 'غبارہ پھاڑنے والا!',
-    rewardBalloonMsg: 'آپ نے 20 غبارے پھاڑے!',
-    rewardMemoryMaster: 'میموری ماسٹر!',
-    rewardMemoryMsg: 'آپ نے تمام جوڑے تلاش کر لیے!',
-    rewardPicturePro: 'تصویر پرو!',
-    rewardPictureMsg: 'آپ نے 10 تصویریں تلاش کیں!',
-    rewardPuzzleMaster: 'پہیلی ماسٹر!',
-    rewardPuzzleMsg: 'آپ نے پہیلی مکمل کی!',
-    rewardQuizChamp: 'کوئز چیمپئن!',
-    rewardQuizMsg: 'آپ نے {0} میں سے {1} صحیح کیے!',
-    rewardMathGenius: 'ریاضی کا جینیئس!',
-    rewardMathMsg: 'آپ نے 10 مسائل حل کیے!',
-    rewardSpellingStar: 'ہجے کا اسٹار!',
-    rewardSpellingMsg: 'آپ نے تمام الفاظ لکھے!',
-    rewardTTTChamp: 'ٹک ٹیک ٹو چیمپئن!',
-    rewardTTTMsg: 'آپ نے کمپیوٹر کو ہرایا!',
-    rewardDotConnector: 'نقطہ جوڑنے والا!',
-    rewardDotMsg: 'آپ نے تمام نقطے جوڑ دیے!',
-    rewardTimeKeeper: 'وقت کا محافظ!',
-    rewardTimeMsg: 'آپ نے 10 گھڑیاں پڑھیں!',
-    achFirstLesson: 'پہلا سبق',
-    achAlphabetStar: 'حروف تہجی کا ستارہ',
-    achNumberNinja: 'نمبر ننجا',
-    achColorArtist: 'رنگ کا فنکار',
-    achShapeMaster: 'شکل کا ماسٹر',
-    achAnimalFriend: 'جانوروں کا دوست',
-    achGameBeginner: 'کھیل کا beginner',
-    achGamePlayer: 'کھیل کا کھلاڑی',
-    achGameChamp: 'کھیل کا چیمپئن',
-    achStarCollector: 'ستارہ جمع کرنے والا',
-    achStarMaster: 'ستارہ ماسٹر',
-    achCoinCollector: 'سکہ جمع کرنے والا',
-    achAllLearner: 'تمام مضامین',
-    achBadgeCollector: 'بیج جمع کرنے والا',
-    tttYourTurn: 'آپ کی باری (X)!',
-    tttComputerTurn: 'آپ کی باری (X)!'
   }
 };
 
 function t(key) {
-  return (LANG[currentLang] && LANG[currentLang][key]) || (LANG.en && LANG.en[key]) || key;
-}
-
-function td(item, field) {
-  if (!item) return '';
-  if (currentLang === 'ur') {
-    const urField = 'ur' + field.charAt(0).toUpperCase() + field.slice(1);
-    return item[urField] || item[field];
-  }
-  return item[field];
+  return (LANG.en && LANG.en[key]) || key;
 }
 
 function applyLanguage() {
@@ -683,17 +514,11 @@ function applyLanguage() {
     const key = el.dataset.i18n;
     el.textContent = t(key);
   });
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
 }
 
 function changeLanguage() {
-  const sel = document.getElementById('languageSelect');
-  currentLang = sel.value;
-  applyLanguage();
-  document.getElementById('gamesGrid').innerHTML = '';
   AudioSystem.click();
-  AudioSystem.ttsLang = currentLang === 'ur' ? 'ur-PK' : 'en-US';
+  AudioSystem.ttsLang = 'en-US';
   saveSettings();
 }
 
@@ -871,7 +696,7 @@ function renderAlphabet() {
   const d = DATA.alphabet[STORE.alphabetIdx];
   document.getElementById('alphabetLetter').textContent = d.letter;
   document.getElementById('alphabetCase').textContent = d.lower;
-  document.getElementById('alphabetWord').textContent = d.urWord || d.word;
+  document.getElementById('alphabetWord').textContent = d.word;
   const imgName = d.word.toLowerCase();
   const img = '<img src="assets/images/' + imgName + '.png" alt="' + d.word + '" class="picture-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'" loading="lazy"><span class="picture-emoji" style="display:none">' + d.emoji + '</span>';
   document.getElementById('alphabetPicture').innerHTML = img;
@@ -892,7 +717,7 @@ function prevLetter() {
 function speakLetter() {
   AudioSystem.click();
   const d = DATA.alphabet[STORE.alphabetIdx];
-  const txt = d.letter + ' ' + (d.urWord || d.word);
+  const txt = d.letter + ' ' + d.word;
   AudioSystem.speak(txt);
 }
 
@@ -902,7 +727,7 @@ function speakLetter() {
 function renderNumber() {
   const d = DATA.numbers[STORE.numberIdx];
   document.getElementById('numberDisplay').textContent = d.num;
-  document.getElementById('numberWord').textContent = d.urWord || d.word;
+  document.getElementById('numberWord').textContent = d.word;
   const area = document.getElementById('numberCountArea');
   area.innerHTML = '';
   const count = Math.min(d.num, 30);
@@ -934,7 +759,7 @@ function prevNumber() {
 function speakNumber() {
   AudioSystem.click();
   const d = DATA.numbers[STORE.numberIdx];
-  const txt = d.urWord || d.word;
+  const txt = d.word;
   AudioSystem.speak(txt);
 }
 
@@ -948,7 +773,7 @@ function renderColors() {
     const card = document.createElement('div');
     card.className = 'color-card';
     card.style.background = c.hex;
-    const cname = c.urName || c.name;
+    const cname = c.name;
     card.innerHTML = `<div class="color-swatch" style="background:${c.hex}"></div><div class="color-name">${cname}</div>`;
     card.addEventListener('click', () => { AudioSystem.click(); AudioSystem.speak(cname); });
     grid.appendChild(card);
@@ -964,7 +789,7 @@ function renderShapes() {
   DATA.shapes.forEach(s => {
     const card = document.createElement('div');
     card.className = 'shape-card';
-    const sname = s.urName || s.name;
+    const sname = s.name;
     card.innerHTML = `<div class="shape-svg">${s.svg}</div><div class="shape-name">${sname}</div>`;
     card.addEventListener('click', () => { AudioSystem.click(); AudioSystem.speak(sname); });
     grid.appendChild(card);
@@ -981,8 +806,8 @@ function renderAnimals() {
     const card = document.createElement('div');
     card.className = 'animal-card';
     const imgName = a.name.toLowerCase();
-    const aname = a.urName || a.name;
-    const afact = a.urFact || a.fact;
+    const aname = a.name;
+    const afact = a.fact;
     card.innerHTML = `<img src="assets/images/${imgName}.png" alt="${a.name}" class="animal-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" loading="lazy"><div class="animal-emoji" style="display:none">${a.emoji}</div><div class="animal-name">${aname}</div><div class="animal-fact">${afact}</div>`;
     card.addEventListener('click', () => {
       AudioSystem.click();
@@ -1002,8 +827,8 @@ function renderFruits() {
   DATA.fruits.forEach(f => {
     const card = document.createElement('div');
     card.className = 'fruit-card';
-    const fname = f.urName || f.name;
-    const ffact = f.urFact || f.fact;
+    const fname = f.name;
+    const ffact = f.fact;
     card.innerHTML = `<div class="fruit-emoji">${f.emoji}</div><div class="fruit-name">${fname}</div><div class="fruit-fact">${ffact}</div>`;
     card.addEventListener('click', () => { AudioSystem.click(); AudioSystem.speak(fname + '. ' + ffact); });
     grid.appendChild(card);
@@ -1019,8 +844,8 @@ function renderBodyParts() {
   DATA.bodyParts.forEach(b => {
     const card = document.createElement('div');
     card.className = 'bodypart-card';
-    const bname = b.urName || b.name;
-    const bfact = b.urFact || b.fact;
+    const bname = b.name;
+    const bfact = b.fact;
     card.innerHTML = `<div class="bodypart-emoji">${b.emoji}</div><div class="bodypart-name">${bname}</div><div class="bodypart-fact">${bfact}</div>`;
     card.addEventListener('click', () => { AudioSystem.click(); AudioSystem.speak(bname + '. ' + bfact); });
     grid.appendChild(card);
@@ -1036,8 +861,8 @@ function renderTransport() {
   DATA.transport.forEach(t => {
     const card = document.createElement('div');
     card.className = 'transport-card';
-    const tname = t.urName || t.name;
-    const tfact = t.urFact || t.fact;
+    const tname = t.name;
+    const tfact = t.fact;
     card.innerHTML = `<div class="transport-emoji">${t.emoji}</div><div class="transport-name">${tname}</div><div class="transport-fact">${tfact}</div>`;
     card.addEventListener('click', () => { AudioSystem.click(); AudioSystem.speak(tname + '. ' + tfact); });
     grid.appendChild(card);
@@ -1065,8 +890,8 @@ function renderDaysMonths() {
   items.forEach(d => {
     const card = document.createElement('div');
     card.className = 'daymonth-card';
-    const dname = d.urName || d.name;
-    const dfact = d.urFact || d.fact;
+    const dname = d.name;
+    const dfact = d.fact;
     card.innerHTML = `<div class="dm-emoji">${d.emoji}</div><div class="dm-name">${dname}</div><div class="dm-short">${d.short}</div><div class="dm-fact">${dfact}</div>`;
     card.addEventListener('click', () => { AudioSystem.click(); AudioSystem.speak(dname + '. ' + dfact); });
     grid.appendChild(card);
@@ -1082,8 +907,8 @@ function renderSeasons() {
   DATA.seasons.forEach(s => {
     const card = document.createElement('div');
     card.className = 'season-card';
-    const sname = s.urName || s.name;
-    const sfact = s.urFact || s.fact;
+    const sname = s.name;
+    const sfact = s.fact;
     card.innerHTML = `<div class="season-emoji">${s.emoji}</div><div class="season-name">${sname}</div><div class="season-fact">${sfact}</div>`;
     card.addEventListener('click', () => { AudioSystem.click(); AudioSystem.speak(sname + '. ' + sfact); });
     grid.appendChild(card);
@@ -1281,7 +1106,7 @@ function initColorMatch() {
 
 function nextCmRound() {
   const q = DATA.colors[Math.floor(Math.random() * DATA.colors.length)];
-  document.getElementById('cmQuestion').textContent = q.urName || q.name;
+  document.getElementById('cmQuestion').textContent = q.name;
   document.getElementById('cmQuestion').style.color = q.hex;
   const options = document.getElementById('cmOptions');
   options.innerHTML = '';
@@ -1349,7 +1174,7 @@ function nextSmRound() {
   answers.forEach(a => {
     const btn = document.createElement('div');
     btn.className = 'game-option';
-    const sname = a.urName || a.name;
+    const sname = a.name;
     btn.innerHTML = `<div style="width:50px;height:50px">${a.svg}</div><div style="font-size:.8rem;margin-top:4px">${sname}</div>`;
     btn.style.flexDirection = 'column';
     btn.dataset.correct = (a.name === q.name) ? 'true' : 'false';
@@ -1402,7 +1227,7 @@ function nextAmRound() {
   answers.forEach(a => {
     const btn = document.createElement('div');
     btn.className = 'game-option';
-    btn.textContent = a.urName || a.name;
+    btn.textContent = a.name;
     btn.dataset.correct = (a.name === q.name) ? 'true' : 'false';
     btn.addEventListener('click', () => handleAmChoice(btn));
     options.appendChild(btn);
@@ -1560,7 +1385,7 @@ function initFindPicture() {
 
 function nextFpRound() {
   const q = DATA.animals[Math.floor(Math.random() * DATA.animals.length)];
-  document.getElementById('fpTarget').textContent = q.urName || q.name;
+  document.getElementById('fpTarget').textContent = q.name;
   const options = document.getElementById('fpOptions');
   options.innerHTML = '';
   let answers = [q];
@@ -1714,10 +1539,10 @@ function nextQuizRound() {
     return;
   }
   const q = quizState.questions[quizState.current];
-  document.getElementById('quizQuestion').textContent = currentLang === 'ur' && q.urQ ? q.urQ : q.q;
+  document.getElementById('quizQuestion').textContent = q.q;
   const options = document.getElementById('quizOptions');
   options.innerHTML = '';
-  const opts = currentLang === 'ur' && q.urOptions ? q.urOptions : q.options;
+  const opts = q.options;
   opts.forEach((opt, i) => {
     const btn = document.createElement('div');
     btn.className = 'game-option';
@@ -2326,12 +2151,6 @@ function loadSettingsUI() {
     document.getElementById('difficultySelect').value = d.difficulty || 'easy';
     document.getElementById('darkModeToggle').checked = d.darkMode === true;
     if (d.darkMode) document.body.classList.add('dark-mode');
-    if (d.language) {
-      currentLang = d.language;
-      document.getElementById('languageSelect').value = d.language;
-      AudioSystem.ttsLang = d.language === 'ur' ? 'ur-PK' : 'en-US';
-      applyLanguage();
-    }
   } catch {}
 }
 
@@ -2340,8 +2159,7 @@ function saveSettings() {
     music: document.getElementById('musicToggle').checked,
     sfx: document.getElementById('sfxToggle').checked,
     difficulty: document.getElementById('difficultySelect').value,
-    darkMode: document.getElementById('darkModeToggle').checked,
-    language: currentLang
+    darkMode: document.getElementById('darkModeToggle').checked
   };
   try { localStorage.setItem('klg_settings', JSON.stringify(settings)); } catch {}
   AudioSystem.musicEnabled = settings.music;
@@ -2426,10 +2244,6 @@ function initApp() {
       if (d.music === false) { AudioSystem.musicEnabled = false; document.getElementById('muteIcon').src = 'assets/icons/mute.svg'; }
       if (d.sfx === false) AudioSystem.sfxEnabled = false;
       if (d.darkMode) document.body.classList.add('dark-mode');
-      if (d.language) {
-        currentLang = d.language;
-        AudioSystem.ttsLang = d.language === 'ur' ? 'ur-PK' : 'en-US';
-      }
     }
   } catch {}
 
