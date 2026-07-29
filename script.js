@@ -2399,6 +2399,9 @@ function resetProgress() {
 function onFirstInteraction() {
   AudioSystem.ensureCtx();
   AudioSystem.startMusic();
+  try {
+    AudioSystem.playTone(440, 0.05, 'sine', 0.01);
+  } catch {}
   document.removeEventListener('click', onFirstInteraction);
   document.removeEventListener('touchstart', onFirstInteraction);
   document.removeEventListener('keydown', onFirstInteraction);
