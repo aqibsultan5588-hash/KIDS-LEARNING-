@@ -13,42 +13,29 @@ const AudioSystem = {
   sfxEnabled: true,
   musicGain: null,
   musicPlaying: false,
-  audioCache: {},
   ready: false,
 
   init() {
     const saved = this.loadSettings();
     this.musicEnabled = saved.music;
     this.sfxEnabled = saved.sfx;
-    this.preloadAudio();
   },
 
   ensureCtx() {
     if (this.ctx) {
-      if (this.ctx.state === 'suspended') return this.ctx.resume().catch(() => {});
-      return Promise.resolve();
+      if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+      return this.ctx;
     }
     try {
-      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      this.ctx = new AC();
       this.musicGain = this.ctx.createGain();
       this.musicGain.gain.value = 0.08;
       this.musicGain.connect(this.ctx.destination);
-    } catch { return Promise.resolve(); }
-    if (this.ctx.state === 'suspended') {
-      return this.ctx.resume().catch(() => {});
-    }
-    return Promise.resolve();
-  },
-
-  preloadAudio() {
-    const sounds = ['click','success','wrong','clap','celebration','background'];
-    sounds.forEach(name => {
-      try {
-        const audio = new Audio('assets/sounds/' + name + '.wav');
-        audio.preload = 'auto';
-        this.audioCache[name] = audio;
-      } catch {}
-    });
+      if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+    } catch { return null; }
+    return this.ctx;
   },
 
   loadSettings() {
@@ -58,87 +45,60 @@ const AudioSystem = {
     } catch { return { music: true, sfx: true }; }
   },
 
-  playFile(name, vol) {
-    if (!this.sfxEnabled) return;
-    const audio = this.audioCache[name];
-    if (audio) {
-      try {
-        audio.volume = vol || 0.5;
-        audio.currentTime = 0;
-        audio.play().catch(() => {});
-      } catch {}
-    }
-  },
-
   playTone(freq, dur, type, vol) {
-    if (!this.sfxEnabled || !this.ctx) return;
+    if (!this.sfxEnabled) return;
+    const ctx = this.ensureCtx();
+    if (!ctx) return;
     try {
-      if (this.ctx.state === 'suspended') this.ctx.resume();
-      const o = this.ctx.createOscillator();
-      const g = this.ctx.createGain();
+      if (ctx.state === 'suspended') ctx.resume();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
       o.type = type || 'sine';
       o.frequency.value = freq;
       g.gain.value = vol || 0.15;
-      g.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + dur);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
       o.connect(g);
-      g.connect(this.ctx.destination);
+      g.connect(ctx.destination);
       o.start();
-      o.stop(this.ctx.currentTime + dur);
+      o.stop(ctx.currentTime + dur);
     } catch {}
   },
 
   click() {
-    this.playFile('click');
-    this.ensureCtx().then(() => {
-      this.playTone(880, 0.06, 'sine', 0.04);
-    });
+    this.playTone(880, 0.06, 'sine', 0.04);
   },
   correct() {
-    this.playFile('success');
-    this.ensureCtx().then(() => {
-      this.playTone(523, 0.12, 'sine', 0.06);
-      setTimeout(() => this.playTone(659, 0.12, 'sine', 0.06), 100);
-      setTimeout(() => this.playTone(784, 0.15, 'sine', 0.06), 200);
-    });
+    this.playTone(523, 0.1, 'sine', 0.06);
+    setTimeout(() => this.playTone(659, 0.1, 'sine', 0.06), 80);
+    setTimeout(() => this.playTone(784, 0.12, 'sine', 0.06), 160);
   },
   wrong() {
-    this.playFile('wrong');
-    this.ensureCtx().then(() => {
-      this.playTone(200, 0.3, 'sawtooth', 0.05);
-    });
+    this.playTone(200, 0.25, 'sawtooth', 0.05);
+    setTimeout(() => this.playTone(180, 0.25, 'sawtooth', 0.05), 120);
   },
   celebration() {
-    this.playFile('celebration');
+    const notes = [523, 587, 659, 698, 784, 880, 988, 1047];
+    notes.forEach((f, i) => setTimeout(() => this.playTone(f, 0.12, 'sine', 0.06), i * 80));
   },
   pop() {
-    this.playFile('click');
-    this.ensureCtx().then(() => {
-      this.playTone(1200, 0.06, 'sine', 0.08);
-    });
+    this.playTone(1200, 0.06, 'sine', 0.08);
   },
 
   startMusic() {
     if (!this.musicEnabled || this.musicPlaying) return;
     this.musicPlaying = true;
-    if (this.audioCache.background) {
-      const bg = this.audioCache.background;
-      bg.loop = true;
-      bg.volume = 0.15;
-      bg.play().catch(() => this.playMelody());
-    } else {
-      this.playMelody();
-    }
     this.ensureCtx();
+    this.playMelody();
   },
 
   playMelody() {
-    if (!this.musicPlaying || !this.musicEnabled || !this.ctx) return;
+    if (!this.musicPlaying || !this.musicEnabled) return;
     const notes = [262, 294, 330, 349, 392, 349, 330, 294, 262, 330, 392, 440, 392, 349, 330, 294];
     const dur = 0.25;
     notes.forEach((f, i) => {
       setTimeout(() => {
         if (!this.musicPlaying || !this.musicEnabled) return;
-        this.playTone(f, dur * 0.9, 'sine', 0.06);
+        this.playTone(f, dur * 0.9, 'sine', 0.04);
       }, i * dur * 1000);
     });
     setTimeout(() => this.playMelody(), notes.length * dur * 1000);
@@ -146,18 +106,16 @@ const AudioSystem = {
 
   stopMusic() {
     this.musicPlaying = false;
-    if (this.audioCache.background) {
-      this.audioCache.background.pause();
-      this.audioCache.background.currentTime = 0;
-    }
   },
 
   playAnimal(name) {
     if (!this.sfxEnabled) return;
     this.ensureCtx();
-    const audio = new Audio('assets/sounds/' + name + '.wav');
-    audio.volume = 0.5;
-    audio.play().catch(() => {});
+    try {
+      const audio = new Audio('assets/sounds/' + name + '.wav');
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+    } catch {}
   },
 
   speak(text) {
@@ -2444,14 +2402,6 @@ function onFirstInteraction() {
   document.removeEventListener('click', onFirstInteraction);
   document.removeEventListener('touchstart', onFirstInteraction);
   document.removeEventListener('keydown', onFirstInteraction);
-  try {
-    const ctx = AudioSystem.ctx || new (window.AudioContext || window.webkitAudioContext)();
-    const b = ctx.createBuffer(1, 1, 22050);
-    const s = ctx.createBufferSource();
-    s.buffer = b;
-    s.connect(ctx.destination);
-    s.start();
-  } catch {}
 }
 document.addEventListener('click', onFirstInteraction);
 document.addEventListener('touchstart', onFirstInteraction);
