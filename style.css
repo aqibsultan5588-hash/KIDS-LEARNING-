@@ -94,108 +94,87 @@ img{max-width:100%;display:block}
 .animal-name{font-weight:700;color:#333;font-size:.95rem}
 .animal-fact{font-size:.75rem;color:#888;text-align:center;padding:0 4px}
 
-/* === GAMES GRID === */
-.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
-.game-card{display:flex;flex-direction:column;align-items:center;gap:8px;padding:20px 8px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .2s}
-.game-card:active{transform:scale(.95)}
-.game-card-icon{font-size:2.5rem}
-.game-card-name{font-weight:700;font-size:.9rem;color:#333;text-align:center}
+/* === FRUITS GRID === */
+.fruits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.fruit-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .2s}
+.fruit-card:active{transform:scale(.95)}
+.fruit-emoji{font-size:3rem}
+.fruit-name{font-weight:700;color:#333;font-size:.9rem}
+.fruit-fact{font-size:.75rem;color:#888;text-align:center}
 
-/* === GAME VIEWS === */
-.game-view{padding:16px}
-.game-instruction{text-align:center;color:#666;font-size:1rem;margin-bottom:16px}
-.game-question{text-align:center;font-size:3rem;font-weight:800;color:#6c5ce7;margin-bottom:16px;min-height:60px}
-.game-options{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:400px;margin:0 auto 16px}
-.game-option{display:flex;align-items:center;justify-content:center;padding:16px;background:#fff;border-radius:16px;font-size:1.5rem;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,.08);cursor:pointer;transition:transform .2s;min-height:80px}
-.game-option:active{transform:scale(.92)}
-.game-option.correct{background:#00b894!important;color:#fff;animation:pulse .5s}
-.game-option.wrong{background:#d63031!important;color:#fff;animation:shake .4s}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
-.game-score{text-align:center;font-size:1.1rem;font-weight:700;color:#6c5ce7;margin-top:8px}
+/* === BODY PARTS GRID === */
+.bodyparts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.bodypart-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .2s}
+.bodypart-card:active{transform:scale(.95)}
+.bodypart-emoji{font-size:2.5rem}
+.bodypart-name{font-weight:700;color:#333;font-size:.9rem}
+.bodypart-fact{font-size:.7rem;color:#888;text-align:center}
 
-/* === BALLOON GAME === */
-.balloon-area{position:relative;height:350px;background:linear-gradient(180deg,#dfe6e9,#b2bec3);border-radius:20px;overflow:hidden;margin-bottom:12px}
-.balloon{position:absolute;font-size:2.5rem;cursor:pointer;transition:transform .15s;animation:balloonFloat 4s ease-in-out infinite;filter:drop-shadow(0 4px 6px rgba(0,0,0,.15))}
-.balloon:active{transform:scale(1.3)}
-.balloon.popped{opacity:0;transform:scale(0);transition:all .3s}
-@keyframes balloonFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+/* === TRANSPORT GRID === */
+.transport-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.transport-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .2s}
+.transport-card:active{transform:scale(.95)}
+.transport-emoji{font-size:3rem}
+.transport-name{font-weight:700;color:#333;font-size:.9rem}
+.transport-fact{font-size:.7rem;color:#888;text-align:center}
 
-/* === MEMORY GAME === */
-.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:400px;margin:0 auto 12px}
-.memory-card{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#6c5ce7,#a29bfe);border-radius:12px;font-size:2rem;cursor:pointer;transition:transform .3s;box-shadow:0 4px 8px rgba(0,0,0,.12)}
-.memory-card.flipped{background:#fff;box-shadow:0 4px 8px rgba(0,0,0,.08)}
-.memory-card.matched{background:#00b894;box-shadow:0 4px 8px rgba(0,0,0,.12);pointer-events:none}
-.memory-card:active{transform:scale(.93)}
+/* === DAYS & MONTHS GRID === */
+.dm-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:12px}
+.dm-tab{padding:10px 24px;background:#fff;border-radius:12px;font-weight:700;font-size:1rem;color:#333;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:all .2s}
+.dm-tab.active{background:#6c5ce7;color:#fff}
+.dm-tab:active{transform:scale(.95)}
+.daysmonths-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.daymonth-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .2s}
+.daymonth-card:active{transform:scale(.95)}
+.dm-emoji{font-size:2.5rem}
+.dm-name{font-weight:700;color:#333;font-size:.9rem}
+.dm-short{font-size:.75rem;color:#a29bfe;font-weight:600}
+.dm-fact{font-size:.7rem;color:#888;text-align:center}
 
-/* === PUZZLE === */
-.puzzle-container{display:flex;flex-direction:column;gap:12px;align-items:center;max-width:400px;margin:0 auto}
-.puzzle-board{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;width:100%;max-width:250px;background:#dfe6e9;border-radius:12px;padding:8px}
-.puzzle-board .puzzle-cell{aspect-ratio:1;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;box-shadow:inset 0 0 0 2px #b2bec3}
-.puzzle-board .puzzle-cell.filled{box-shadow:inset 0 0 0 2px #00b894}
-.puzzle-pieces{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.puzzle-piece{padding:10px 16px;background:#fff;border-radius:10px;font-size:1.5rem;cursor:grab;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:transform .2s;touch-action:none}
-.puzzle-piece:active{cursor:grabbing;transform:scale(.9)}
-.puzzle-piece.placed{opacity:.4;pointer-events:none}
+/* === SEASONS GRID === */
+.seasons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.season-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .2s}
+.season-card:active{transform:scale(.95)}
+.season-emoji{font-size:2.5rem}
+.season-name{font-weight:700;color:#333;font-size:.9rem}
+.season-fact{font-size:.7rem;color:#888;text-align:center}
 
-/* === PROGRESS === */
-.progress-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
-.stat-card{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px;background:#fff;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
-.stat-icon{font-size:2rem}
-.stat-label{font-weight:600;color:#888;font-size:.85rem}
-.stat-value{font-size:1.5rem;font-weight:800;color:#6c5ce7}
-.achievement-list{display:flex;flex-direction:column;gap:8px}
-.achievement-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.achievement-item .ach-icon{font-size:1.5rem}
-.achievement-item .ach-name{font-weight:700;font-size:.95rem;flex:1}
-.achievement-item .ach-status{font-size:1rem}
-.achievement-item.locked{opacity:.5}
-.achievement-item.locked .ach-status{content:'🔒'}
+/* === HINDI MODULE === */
 
-/* === SETTINGS === */
-.settings-list{display:flex;flex-direction:column;gap:16px;max-width:400px;margin:0 auto}
-.setting-item{display:flex;align-items:center;justify-content:space-between;padding:16px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);font-weight:600;font-size:1rem}
-.setting-item select{padding:8px 12px;border-radius:8px;border:2px solid #dfe6e9;font-size:1rem;font-weight:600;color:#333}
 
-/* === TOGGLE SWITCH === */
-.toggle{position:relative;display:inline-block;width:52px;height:28px;flex-shrink:0}
-.toggle input{opacity:0;width:0;height:0}
-.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#dfe6e9;border-radius:28px;transition:.3s}
-.slider::before{content:'';position:absolute;height:22px;width:22px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.toggle input:checked+.slider{background:#6c5ce7}
-.toggle input:checked+.slider::before{transform:translateX(24px)}
+/* === TIC TAC TOE === */
+.tictactoe-board{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:280px;margin:0 auto 12px}
+.ttt-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;font-size:3rem;font-weight:800;color:#6c5ce7;box-shadow:0 4px 8px rgba(0,0,0,.08);cursor:pointer;transition:transform .2s}
+.ttt-cell:active{transform:scale(.93)}
 
-/* === OVERLAY === */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:20px}
-.overlay.show{display:flex}
-.overlay-content{background:#fff;border-radius:24px;padding:30px;text-align:center;max-width:340px;width:100%;animation:popUp .4s ease}
-@keyframes popUp{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
-.overlay-icon{font-size:4rem;margin-bottom:10px}
-.overlay-content h2{color:#6c5ce7;font-size:1.5rem;margin-bottom:8px}
-.overlay-content p{color:#666;margin-bottom:8px}
-.overlay-rewards{display:flex;gap:8px;justify-content:center;margin:12px 0;font-size:1.5rem}
-.overlay-content .nav-btn{margin-top:12px;padding:12px 40px}
+/* === SPELLING GAME === */
+.spelling-display{text-align:center;font-size:5rem;margin-bottom:12px}
+.spelling-input-area{text-align:center;margin-bottom:12px}
+.spelling-slots{display:flex;gap:6px;justify-content:center;margin-bottom:12px;flex-wrap:wrap}
+.spell-slot{width:36px;height:44px;border:2px dashed #6c5ce7;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:700;color:#333;background:#f8f9ff}
+.spell-slot[data-filled=true]{border-style:solid;background:#fff}
+.spelling-buttons{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:300px;margin:0 auto}
+.spell-btn{padding:10px 16px;background:linear-gradient(135deg,#a29bfe,#6c5ce7);color:#fff;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .2s;box-shadow:0 2px 6px rgba(108,92,231,.3)}
+.spell-btn:active{transform:scale(.9)}
+.spell-btn.used{opacity:.3;pointer-events:none}
 
-/* === CONFETTI === */
-#confettiContainer{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;overflow:hidden}
-.confetti-piece{position:absolute;width:10px;height:10px;top:-10px;animation:confettiFall linear forwards}
-@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+/* === CONNECT DOTS === */
+#connectCanvas{display:block;margin:0 auto 12px;max-width:100%;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);background:#f0f4ff}
 
-/* === ABOUT === */
-.about-content{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px;background:#fff;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,.08);text-align:center;max-width:400px;margin:0 auto}
-.about-icon{font-size:4rem}
-.about-content h3{color:#6c5ce7;font-size:1.3rem}
-.about-content p{color:#666;font-size:.95rem;line-height:1.5}
-.about-content ul{text-align:left;color:#555;font-size:.9rem;line-height:1.8;padding-left:20px}
-.about-content ul li::marker{color:#6c5ce7}
+/* === COLORING === */
+.coloring-tools{display:flex;flex-direction:column;align-items:center;gap:12px}
+.color-picker{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:340px}
+.color-swatch-btn{width:32px;height:32px;border-radius:50%;cursor:pointer;border:3px solid #dfe6e9;transition:transform .2s}
+.color-swatch-btn:active{transform:scale(.9)}
+.coloring-actions{display:flex;gap:12px;justify-content:center;width:100%}
 
-/* === RESPONSIVE === */
+/* === RESPONSIVE UPDATES === */
 @media(min-width:600px){
-  .home-menu{max-width:400px}
-  .home-btn{padding:20px 28px;font-size:1.2rem}
-  .app-title{font-size:3rem}
-  .logo-img{width:110px;height:110px}
-  .module-grid{grid-template-columns:repeat(3,1fr)}
+  .fruits-grid{grid-template-columns:repeat(3,1fr)}
+  .bodyparts-grid{grid-template-columns:repeat(3,1fr)}
+  .transport-grid{grid-template-columns:repeat(3,1fr)}
+  .daysmonths-grid{grid-template-columns:repeat(4,1fr)}
+  .seasons-grid{grid-template-columns:repeat(3,1fr)}
   .colors-grid{grid-template-columns:repeat(4,1fr)}
   .shapes-grid{grid-template-columns:repeat(3,1fr)}
   .animals-grid{grid-template-columns:repeat(3,1fr)}
@@ -230,6 +209,149 @@ img{max-width:100%;display:block}
 .setting-item .btn-icon-sm{filter:none;vertical-align:middle;margin-right:6px}
 .speak-btn .btn-icon-sm{filter:brightness(0) invert(1)}
 .nav-btn .btn-icon-sm{filter:brightness(0) invert(1);vertical-align:middle}
+
+/* === DARK MODE === */
+body.dark-mode{background:#1a1a2e;color:#e0e0e0}
+body.dark-mode #app{background:#1a1a2e}
+body.dark-mode #topBar{background:linear-gradient(135deg,#16213e,#0f3460)}
+body.dark-mode .module-card,
+body.dark-mode .learning-container,
+body.dark-mode .shape-card,
+body.dark-mode .animal-card,
+body.dark-mode .fruit-card,
+body.dark-mode .bodypart-card,
+body.dark-mode .transport-card,
+body.dark-mode .daymonth-card,
+body.dark-mode .season-card,
+body.dark-mode .game-card,
+body.dark-mode .game-option,
+body.dark-mode .stat-card,
+body.dark-mode .achievement-item,
+body.dark-mode .setting-item,
+body.dark-mode .about-content,
+body.dark-mode .overlay-content,
+body.dark-mode .puzzle-piece,
+body.dark-mode .ttt-cell,
+body.dark-mode .color-card,
+body.dark-mode .dm-tab{background:#16213e;color:#e0e0e0;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+body.dark-mode .game-option{background:#1a1a2e}
+body.dark-mode .color-name{color:#fff}
+body.dark-mode .animal-name,
+body.dark-mode .fruit-name,
+body.dark-mode .bodypart-name,
+body.dark-mode .transport-name,
+body.dark-mode .dm-name,
+body.dark-mode .season-name,
+body.dark-mode .shape-name{color:#e0e0e0}
+body.dark-mode .animal-fact,
+body.dark-mode .fruit-fact,
+body.dark-mode .bodypart-fact,
+body.dark-mode .transport-fact,
+body.dark-mode .dm-fact,
+body.dark-mode .season-fact{color:#aaa}
+body.dark-mode .view-title{color:#a29bfe}
+body.dark-mode .game-instruction{color:#aaa}
+body.dark-mode .game-score{color:#a29bfe}
+body.dark-mode .stat-value{color:#a29bfe}
+body.dark-mode .letter-word-label{color:#aaa}
+body.dark-mode .letter-word{color:#a29bfe}
+body.dark-mode .spell-slot{background:#1a1a2e;border-color:#a29bfe;color:#e0e0e0}
+body.dark-mode .balloon-area{background:linear-gradient(180deg,#16213e,#0f3460)}
+body.dark-mode #connectCanvas{background:#16213e}
+body.dark-mode .puzzle-board{background:#16213e}
+body.dark-mode .puzzle-board .puzzle-cell{background:#1a1a2e;box-shadow:inset 0 0 0 2px #0f3460}
+body.dark-mode .puzzle-board .puzzle-cell.filled{box-shadow:inset 0 0 0 2px #00b894}
+body.dark-mode .dm-tab.active{background:#6c5ce7;color:#fff}
+body.dark-mode .home-bg{background:linear-gradient(135deg,#0f3460,#16213e)}
+body.dark-mode .home-bg::before{background:radial-gradient(circle at 20% 50%,rgba(255,255,255,.05) 0%,transparent 50%)}
+body.dark-mode .stat-label{color:#aaa}
+
+/* === GAMES GRID === */
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.game-card{display:flex;flex-direction:column;align-items:center;gap:8px;padding:20px 8px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .2s}
+.game-card:active{transform:scale(.95)}
+.game-card-name{font-weight:700;color:#333;font-size:.9rem;text-align:center}
+
+/* === GAME COMMON === */
+.game-view{padding:16px}
+.game-instruction{text-align:center;font-size:1.1rem;color:#666;margin-bottom:16px;font-weight:600}
+.game-score{text-align:center;font-size:1.1rem;color:#6c5ce7;font-weight:700;margin-top:12px}
+.game-question{text-align:center;font-size:2.5rem;margin-bottom:16px;font-weight:700;color:#333}
+.game-options{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
+.game-option{display:flex;align-items:center;justify-content:center;padding:14px 24px;background:#fff;border-radius:12px;font-size:1.2rem;font-weight:700;color:#333;box-shadow:0 4px 12px rgba(0,0,0,.08);cursor:pointer;transition:transform .2s;min-width:70px;min-height:60px}
+.game-option:active{transform:scale(.93)}
+.game-option.correct{background:#00b894!important;color:#fff!important;box-shadow:0 4px 12px rgba(0,184,148,.4)}
+.game-option.wrong{background:#e74c3c!important;color:#fff!important;box-shadow:0 4px 12px rgba(231,76,60,.4)}
+
+/* === BALLOON POP === */
+.balloon-area{position:relative;width:100%;height:350px;background:linear-gradient(180deg,#dfe6e9,#b2bec3);border-radius:20px;overflow:hidden;margin-bottom:12px}
+.balloon{position:absolute;font-size:2.5rem;cursor:pointer;animation:floatUp 4s ease-in-out infinite;transition:transform .2s;user-select:none;touch-action:manipulation}
+.balloon:active{transform:scale(.8)}
+.balloon.popped{opacity:0;transform:scale(1.5);transition:all .3s}
+@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+
+/* === MEMORY GAME === */
+.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:320px;margin:0 auto 12px}
+.memory-card{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#6c5ce7,#a29bfe);border-radius:12px;font-size:2rem;color:#fff;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,.12);transition:transform .3s}
+.memory-card:active{transform:scale(.93)}
+.memory-card.flipped{background:#fff;color:#333;box-shadow:0 4px 8px rgba(0,0,0,.08)}
+.memory-card.matched{background:#00b894;color:#fff;cursor:default}
+
+/* === PUZZLE === */
+.puzzle-container{display:flex;flex-direction:column;gap:16px;align-items:center}
+.puzzle-board{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;width:200px;height:200px;background:#f0f4ff;border-radius:12px;padding:4px}
+.puzzle-cell{background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:inset 0 0 0 2px #dfe6e9;transition:all .3s}
+.puzzle-cell.filled{box-shadow:inset 0 0 0 2px #00b894}
+.puzzle-pieces{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:240px}
+.puzzle-piece{width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:10px;font-size:2rem;box-shadow:0 4px 8px rgba(0,0,0,.08);cursor:grab;transition:transform .2s,opacity .2s}
+.puzzle-piece:active{cursor:grabbing}
+.puzzle-piece.placed{opacity:.3;pointer-events:none}
+
+/* === PROGRESS === */
+.progress-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.stat-card{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px;background:#fff;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.stat-label{font-size:.8rem;color:#888;font-weight:600}
+.stat-value{font-size:1.5rem;font-weight:800;color:#6c5ce7}
+.achievement-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.achievement-item{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);font-size:.85rem}
+.achievement-item.locked{opacity:.5}
+.achievement-item .ach-name{flex:1;font-weight:600;color:#333}
+
+/* === SETTINGS === */
+.settings-list{display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto}
+.setting-item{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);font-weight:600;color:#333}
+.setting-item span{display:flex;align-items:center;gap:8px}
+.toggle{position:relative;display:inline-block;width:44px;height:24px}
+.toggle input{opacity:0;width:0;height:0}
+.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#dfe6e9;border-radius:24px;transition:.3s}
+.slider::before{content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
+.toggle input:checked+.slider{background:#6c5ce7}
+.toggle input:checked+.slider::before{transform:translateX(20px)}
+.setting-item select{padding:8px 12px;border:2px solid #dfe6e9;border-radius:8px;font-size:.9rem;font-weight:600;color:#333;background:#fff}
+
+/* === ABOUT === */
+.about-content{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px;background:#fff;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,.08);text-align:center}
+.about-content h3{font-size:1.3rem;color:#6c5ce7}
+.about-content p{color:#666;font-size:.95rem;line-height:1.5}
+.about-content ul{text-align:left;list-style:none;padding:0}
+.about-content li{padding:4px 0;color:#555;font-size:.9rem}
+.about-content li::before{content:'\u2B50';margin-right:8px}
+
+/* === OVERLAY / REWARD === */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:center;justify-content:center;padding:20px}
+.overlay.show{display:flex}
+.overlay-content{display:flex;flex-direction:column;align-items:center;gap:12px;padding:30px;background:#fff;border-radius:24px;box-shadow:0 10px 40px rgba(0,0,0,.2);max-width:340px;width:100%;animation:popIn .4s ease;text-align:center}
+.overlay-content h2{color:#6c5ce7;font-size:1.5rem}
+.overlay-content p{color:#666;font-size:1rem}
+.overlay-rewards{display:flex;gap:4px;justify-content:center;margin:8px 0}
+
+/* === CONFETTI === */
+#confettiContainer{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;overflow:hidden}
+.confetti-piece{position:absolute;top:-10px;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+
+/* === SELECT/DROPDOWN === */
+select{font-family:inherit;cursor:pointer}
 
 /* === UTILITIES === */
 .text-center{text-align:center}

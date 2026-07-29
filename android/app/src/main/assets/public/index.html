@@ -73,6 +73,27 @@
         <img src="assets/icons/animals.png" alt="" class="module-icon-img">
         <span class="module-name">Animals</span>
       </div>
+      <div class="module-card" onclick="openModule('fruits')" style="background:linear-gradient(135deg,#ffecd2,#fcb69f)">
+        <img src="assets/icons/fruits.svg" alt="" class="module-icon-img" onerror="this.outerHTML='<span class=\'module-icon\'>&#x1F34E;</span>'">
+        <span class="module-name">Fruits & Veg</span>
+      </div>
+      <div class="module-card" onclick="openModule('bodyparts')" style="background:linear-gradient(135deg,#a8edea,#fed6e3)">
+        <img src="assets/icons/bodyparts.svg" alt="" class="module-icon-img" onerror="this.outerHTML='<span class=\'module-icon\'>&#x1F9CD;</span>'">
+        <span class="module-name">Body Parts</span>
+      </div>
+      <div class="module-card" onclick="openModule('transport')" style="background:linear-gradient(135deg,#89f7fe,#66a6ff)">
+        <img src="assets/icons/transport.svg" alt="" class="module-icon-img" onerror="this.outerHTML='<span class=\'module-icon\'>&#x1F697;</span>'">
+        <span class="module-name">Transport</span>
+      </div>
+      <div class="module-card" onclick="openModule('daysmonths')" style="background:linear-gradient(135deg,#fddb92,#d1fdff)">
+        <img src="assets/icons/daysmonths.svg" alt="" class="module-icon-img" onerror="this.outerHTML='<span class=\'module-icon\'>&#x1F4C5;</span>'">
+        <span class="module-name">Days & Months</span>
+      </div>
+      <div class="module-card" onclick="openModule('seasons')" style="background:linear-gradient(135deg,#d4fc79,#96e6a1)">
+        <img src="assets/icons/seasons.svg" alt="" class="module-icon-img" onerror="this.outerHTML='<span class=\'module-icon\'>&#x2600;&#xFE0F;</span>'">
+        <span class="module-name">Seasons</span>
+      </div>
+
     </div>
   </div>
 
@@ -131,6 +152,39 @@
     <h2 class="view-title">Animals</h2>
     <div class="animals-grid" id="animalsGrid"></div>
   </div>
+
+  <!-- FRUITS MODULE -->
+  <div id="moduleFruits" class="view module-view">
+    <h2 class="view-title">Fruits & Vegetables</h2>
+    <div class="fruits-grid" id="fruitsGrid"></div>
+  </div>
+
+  <!-- BODY PARTS MODULE -->
+  <div id="moduleBodyparts" class="view module-view">
+    <h2 class="view-title">Body Parts</h2>
+    <div class="bodyparts-grid" id="bodypartsGrid"></div>
+  </div>
+
+  <!-- TRANSPORT MODULE -->
+  <div id="moduleTransport" class="view module-view">
+    <h2 class="view-title">Transport</h2>
+    <div class="transport-grid" id="transportGrid"></div>
+  </div>
+
+  <!-- DAYS & MONTHS MODULE -->
+  <div id="moduleDaysmonths" class="view module-view">
+    <h2 class="view-title">Days & Months</h2>
+    <div class="dm-tabs"><button class="dm-tab active" onclick="showDMTab('day')">Days</button><button class="dm-tab" onclick="showDMTab('month')">Months</button></div>
+    <div class="daysmonths-grid" id="daysmonthsGrid"></div>
+  </div>
+
+  <!-- SEASONS MODULE -->
+  <div id="moduleSeasons" class="view module-view">
+    <h2 class="view-title">Seasons & Weather</h2>
+    <div class="seasons-grid" id="seasonsGrid"></div>
+  </div>
+
+
 
   <!-- MINI GAMES VIEW -->
   <div id="viewMinigames" class="view">
@@ -227,6 +281,67 @@
     <div class="game-score">Score: <span id="quizScore">0</span> / <span id="quizTotal">0</span></div>
   </div>
 
+  <!-- GAME: MATH OPERATIONS -->
+  <div id="gameMathOps" class="view game-view">
+    <h2 class="view-title">Math Operations</h2>
+    <p class="game-instruction" id="mathQuestion">What is 5 + 3?</p>
+    <div class="game-options" id="mathOptions"></div>
+    <div class="game-score">Score: <span id="mathScore">0</span></div>
+  </div>
+
+  <!-- GAME: WORD SPELLING -->
+  <div id="gameSpelling" class="view game-view">
+    <h2 class="view-title">Word Spelling</h2>
+    <p class="game-instruction" id="spellingTarget">Spell the word!</p>
+    <div class="spelling-display"><span id="spellingEmoji">&#x1F34E;</span></div>
+    <div class="spelling-input-area">
+      <div class="spelling-slots" id="spellingSlots"></div>
+    </div>
+    <div class="spelling-buttons" id="spellingButtons"></div>
+    <div class="game-score">Score: <span id="spellingScore">0</span></div>
+  </div>
+
+  <!-- GAME: TIC TAC TOE -->
+  <div id="gameTicTacToe" class="view game-view">
+    <h2 class="view-title">Tic Tac Toe</h2>
+    <p class="game-instruction">You are X, Computer is O!</p>
+    <div class="tictactoe-board" id="tttBoard"></div>
+    <p id="tttStatus" style="text-align:center;font-weight:700;font-size:1.1rem;color:#6c5ce7">Your turn!</p>
+    <div class="game-score">Wins: <span id="tttWins">0</span> | Losses: <span id="tttLosses">0</span></div>
+    <button class="nav-btn" onclick="initTicTacToe()">Restart</button>
+  </div>
+
+  <!-- GAME: CONNECT THE DOTS -->
+  <div id="gameConnectDots" class="view game-view">
+    <h2 class="view-title">Connect the Dots</h2>
+    <p class="game-instruction">Tap the numbers in order!</p>
+    <canvas id="connectCanvas" width="340" height="340"></canvas>
+    <div class="game-score">Connected: <span id="cdScore">0</span></div>
+  </div>
+
+  <!-- GAME: COLORING BOOK -->
+  <div id="gameColoring" class="view game-view">
+    <h2 class="view-title">Coloring Book</h2>
+    <p class="game-instruction">Pick a color and paint!</p>
+    <div class="coloring-tools">
+      <canvas id="coloringCanvas" width="340" height="340" style="border:3px solid #dfe6e9;border-radius:12px;background:#fff;touch-action:none"></canvas>
+      <div class="color-picker" id="colorPicker"></div>
+      <div class="coloring-actions">
+        <button class="nav-btn" onclick="clearColoring()">Clear</button>
+        <button class="nav-btn" style="background:linear-gradient(135deg,#00b894,#00a381)" onclick="saveColoring()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME: CLOCK READING -->
+  <div id="gameClock" class="view game-view">
+    <h2 class="view-title">Clock Reading</h2>
+    <p class="game-instruction">What time is it?</p>
+    <canvas id="clockCanvas" width="250" height="250"></canvas>
+    <div class="game-options" id="clockOptions"></div>
+    <div class="game-score">Score: <span id="clockScore">0</span></div>
+  </div>
+
   <!-- PROGRESS VIEW -->
   <div id="viewProgress" class="view">
     <h2 class="view-title">My Progress</h2>
@@ -276,6 +391,10 @@
           <option value="hard">Hard</option>
         </select>
       </div>
+      <div class="setting-item">
+        <span><img src="assets/icons/moon.svg" alt="" class="btn-icon-sm" id="darkModeIcon" onerror="this.src='assets/icons/settings.png'"> Dark Mode</span>
+        <label class="toggle"><input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()"><span class="slider"></span></label>
+      </div>
       <button class="danger-btn" onclick="resetProgress()"><img src="assets/icons/badge.svg" alt="" class="btn-icon-sm"> Reset Progress</button>
     </div>
   </div>
@@ -291,11 +410,17 @@
       <p>Features:</p>
       <ul>
         <li>Alphabet Learning A-Z</li>
+
         <li>Numbers 1-100</li>
         <li>Colors & Shapes</li>
-        <li>Animals & Sounds</li>
-        <li>10 Mini Games</li>
-        <li>Rewards & Achievements</li>
+        <li>Animals, Fruits & Vegetables</li>
+        <li>Body Parts & Transport</li>
+        <li>Days, Months & Seasons</li>
+        <li>16 Mini Games</li>
+        <li>Math Operations & Spelling</li>
+        <li>Tic Tac Toe & Connect Dots</li>
+        <li>Coloring Book & Clock Reading</li>
+        <li>Dark Mode & Rewards</li>
       </ul>
       <p>Made with &#x2764;&#xFE0F; for kids everywhere!</p>
     </div>
