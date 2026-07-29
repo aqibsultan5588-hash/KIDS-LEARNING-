@@ -43,9 +43,11 @@ const AudioSystem = {
   preloadAudio() {
     const sounds = ['click','success','wrong','clap','celebration','background'];
     sounds.forEach(name => {
-      const audio = new Audio('assets/sounds/' + name + '.wav');
-      audio.preload = 'auto';
-      this.audioCache[name] = audio;
+      try {
+        const audio = new Audio('assets/sounds/' + name + '.wav');
+        audio.preload = 'auto';
+        this.audioCache[name] = audio;
+      } catch {}
     });
   },
 
@@ -58,12 +60,13 @@ const AudioSystem = {
 
   playFile(name, vol) {
     if (!this.sfxEnabled) return;
-    this.ensureCtx();
     const audio = this.audioCache[name];
     if (audio) {
-      audio.volume = vol || 0.5;
-      audio.currentTime = 0;
-      audio.play().catch(() => {});
+      try {
+        audio.volume = vol || 0.5;
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+      } catch {}
     }
   },
 
@@ -85,50 +88,47 @@ const AudioSystem = {
   },
 
   click() {
+    this.playFile('click');
     this.ensureCtx().then(() => {
-      this.playFile('click');
       this.playTone(880, 0.06, 'sine', 0.04);
     });
   },
   correct() {
+    this.playFile('success');
     this.ensureCtx().then(() => {
-      this.playFile('success');
       this.playTone(523, 0.12, 'sine', 0.06);
       setTimeout(() => this.playTone(659, 0.12, 'sine', 0.06), 100);
       setTimeout(() => this.playTone(784, 0.15, 'sine', 0.06), 200);
     });
   },
   wrong() {
+    this.playFile('wrong');
     this.ensureCtx().then(() => {
-      this.playFile('wrong');
       this.playTone(200, 0.3, 'sawtooth', 0.05);
     });
   },
   celebration() {
-    this.ensureCtx().then(() => {
-      this.playFile('celebration');
-    });
+    this.playFile('celebration');
   },
   pop() {
+    this.playFile('click');
     this.ensureCtx().then(() => {
-      this.playFile('click');
       this.playTone(1200, 0.06, 'sine', 0.08);
     });
   },
 
   startMusic() {
     if (!this.musicEnabled || this.musicPlaying) return;
-    this.ensureCtx().then(() => {
-      this.musicPlaying = true;
-      if (this.audioCache.background) {
-        const bg = this.audioCache.background;
-        bg.loop = true;
-        bg.volume = 0.15;
-        bg.play().catch(() => this.playMelody());
-      } else {
-        this.playMelody();
-      }
-    });
+    this.musicPlaying = true;
+    if (this.audioCache.background) {
+      const bg = this.audioCache.background;
+      bg.loop = true;
+      bg.volume = 0.15;
+      bg.play().catch(() => this.playMelody());
+    } else {
+      this.playMelody();
+    }
+    this.ensureCtx();
   },
 
   playMelody() {
@@ -161,16 +161,16 @@ const AudioSystem = {
   },
 
   speak(text) {
-    if (!this.sfxEnabled) return;
-    this.ensureCtx();
     if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = this.ttsLang || 'en-US';
-    u.rate = 0.85;
-    u.pitch = 1.2;
-    u.volume = 1;
-    window.speechSynthesis.speak(u);
+    try {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = this.ttsLang || 'en-US';
+      u.rate = 0.85;
+      u.pitch = 1.2;
+      u.volume = 1;
+      window.speechSynthesis.speak(u);
+    } catch {}
   }
 };
 
@@ -2444,6 +2444,14 @@ function onFirstInteraction() {
   document.removeEventListener('click', onFirstInteraction);
   document.removeEventListener('touchstart', onFirstInteraction);
   document.removeEventListener('keydown', onFirstInteraction);
+  try {
+    const ctx = AudioSystem.ctx || new (window.AudioContext || window.webkitAudioContext)();
+    const b = ctx.createBuffer(1, 1, 22050);
+    const s = ctx.createBufferSource();
+    s.buffer = b;
+    s.connect(ctx.destination);
+    s.start();
+  } catch {}
 }
 document.addEventListener('click', onFirstInteraction);
 document.addEventListener('touchstart', onFirstInteraction);
