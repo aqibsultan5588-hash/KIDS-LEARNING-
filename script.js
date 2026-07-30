@@ -353,6 +353,9 @@ const LANG = {
     progress: 'Progress',
     settings: 'Settings',
     about: 'About',
+    trace: 'Trace',
+    clear: 'Clear',
+    save: 'Save',
     chooseWhatToLearn: 'Choose What to Learn',
     alphabet: 'Alphabet',
     numbers: 'Numbers',
@@ -2214,6 +2217,168 @@ function resetProgress() {
 // ============================================================
 // FIRST INTERACTION - wake up AudioContext
 // ============================================================
+
+// ============================================================
+// TRACE MODULE
+// ============================================================
+let traceCtx, traceType;
+
+const TRACE_COLORS = ['#e74c3c','#e67e22','#f1c40f','#2ecc71','#3498db','#9b59b6','#1abc9c','#e84393'];
+let traceActiveColor = TRACE_COLORS[0];
+let traceColorEls = [];
+
+function openTrace(type) {
+  traceType = type;
+  showView('moduleTrace');
+  document.querySelector('#moduleTrace .view-title').textContent = type === 'alphabet' ? t('alphabet') : t('numbers');
+
+  let char, label;
+  if (type === 'alphabet') {
+    const idx = STORE.curModuleIdx || 0;
+    const d = DATA.alphabet[idx];
+    char = d.word.charAt(0).toUpperCase();
+    label = d.word;
+  } else {
+    const idx = STORE.currentNumber || 0;
+    const d = DATA.numbers[idx];
+    char = d.number;
+    label = d.word;
+  }
+  document.getElementById('traceChar').textContent = char;
+  document.getElementById('traceLabel').textContent = label;
+
+  setTimeout(initTraceCanvas, 100);
+}
+
+function initTraceCanvas() {
+  const canvas = document.getElementById('traceCanvas');
+  const wrap = canvas.parentElement;
+  const rect = wrap.getBoundingClientRect();
+  const size = Math.min(rect.width, 400);
+  canvas.width = size * 2;
+  canvas.height = size * 2;
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
+  traceCtx = canvas.getContext('2d');
+  traceCtx.scale(2, 2);
+
+  drawTraceGuide(canvas, size);
+  setupTraceDrawing(canvas);
+
+  // color picker
+  const container = document.getElementById('traceColors');
+  container.innerHTML = '';
+  traceColorEls = [];
+  TRACE_COLORS.forEach(c => {
+    const el = document.createElement('div');
+    el.className = 'tc' + (c === traceActiveColor ? ' active' : '');
+    el.style.background = c;
+    el.addEventListener('click', () => {
+      traceColorEls.forEach(e => e.classList.remove('active'));
+      el.classList.add('active');
+      traceActiveColor = c;
+    });
+    container.appendChild(el);
+    traceColorEls.push(el);
+  });
+}
+
+function drawTraceGuide(canvas, size) {
+  const ctx = traceCtx;
+  ctx.clearRect(0, 0, size, size);
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, size, size);
+
+  const char = document.getElementById('traceChar').textContent;
+  ctx.font = 'bold ' + (size * 0.55) + 'px "Segoe UI", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  // guide outline
+  ctx.shadowColor = 'rgba(0,0,0,0.1)';
+  ctx.shadowBlur = 8;
+  ctx.strokeStyle = 'rgba(200,200,200,0.5)';
+  ctx.lineWidth = 3;
+  ctx.setLineDash([8, 6]);
+  ctx.strokeText(char, size / 2, size / 2);
+  ctx.setLineDash([]);
+  ctx.shadowBlur = 0;
+
+  // faint fill
+  ctx.fillStyle = 'rgba(232,67,147,0.08)';
+  ctx.fillText(char, size / 2, size / 2);
+}
+
+function setupTraceDrawing(canvas) {
+  let drawing = false;
+  const ctx = traceCtx;
+  const size = canvas.width / 2;
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return {
+      x: (clientX - rect.left) * scaleX / 2,
+      y: (clientY - rect.top) * scaleY / 2
+    };
+  }
+
+  function startDraw(e) {
+    e.preventDefault();
+    drawing = true;
+    const pos = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+    ctx.lineWidth = 8;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = traceActiveColor;
+  }
+
+  function moveDraw(e) {
+    e.preventDefault();
+    if (!drawing) return;
+    const pos = getPos(e);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+  }
+
+  function endDraw(e) {
+    e.preventDefault();
+    drawing = false;
+    ctx.beginPath();
+  }
+
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', moveDraw);
+  canvas.addEventListener('mouseup', endDraw);
+  canvas.addEventListener('mouseleave', endDraw);
+  canvas.addEventListener('touchstart', startDraw, { passive: false });
+  canvas.addEventListener('touchmove', moveDraw, { passive: false });
+  canvas.addEventListener('touchend', endDraw, { passive: false });
+  canvas.addEventListener('touchcancel', endDraw, { passive: false });
+}
+
+function clearTrace() {
+  const canvas = document.getElementById('traceCanvas');
+  const size = canvas.width / 2;
+  drawTraceGuide(canvas, size);
+  AudioSystem.click();
+}
+
+function saveTrace() {
+  const canvas = document.getElementById('traceCanvas');
+  const link = document.createElement('a');
+  link.download = 'trace_' + document.getElementById('traceChar').textContent + '.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  AudioSystem.click();
+}
 function onFirstInteraction() {
   AudioSystem.ensureCtx();
   AudioSystem.startMusic();

@@ -111,6 +111,7 @@
       </div>
       <div class="letter-picture" id="alphabetPicture"><span class="picture-emoji">&#x1F34E;</span></div>
       <button class="speak-btn" onclick="speakLetter()"><img src="assets/icons/sound-on.svg" alt="" class="btn-icon-sm"> <span data-i18n="listen">Listen</span></button>
+      <div style="display:flex;gap:8px;width:100%"><button class="nav-btn" style="flex:1" onclick="openTrace('alphabet')"><span>&#x270D;</span> <span data-i18n="trace">Trace</span></button></div>
       <div class="nav-buttons">
         <button class="nav-btn" onclick="prevLetter()"><img src="assets/icons/back.svg" alt="" class="btn-icon-sm"> <span data-i18n="previous">Previous</span></button>
         <button class="nav-btn" onclick="nextLetter()"><span data-i18n="next">Next</span> <img src="assets/icons/back.svg" alt="" class="btn-icon-sm flip-h"></button>
@@ -128,9 +129,29 @@
       </div>
       <div class="number-count-area" id="numberCountArea"></div>
       <button class="speak-btn" onclick="speakNumber()"><img src="assets/icons/sound-on.svg" alt="" class="btn-icon-sm"> <span data-i18n="listen">Listen</span></button>
+      <div style="display:flex;gap:8px;width:100%"><button class="nav-btn" style="flex:1" onclick="openTrace('numbers')"><span>&#x270D;</span> <span data-i18n="trace">Trace</span></button></div>
       <div class="nav-buttons">
         <button class="nav-btn" onclick="prevNumber()"><img src="assets/icons/back.svg" alt="" class="btn-icon-sm"> <span data-i18n="previous">Previous</span></button>
         <button class="nav-btn" onclick="nextNumber()"><span data-i18n="next">Next</span> <img src="assets/icons/back.svg" alt="" class="btn-icon-sm flip-h"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRACE MODULE -->
+  <div id="moduleTrace" class="view module-view">
+    <h2 class="view-title" data-i18n="trace">Trace</h2>
+    <div class="trace-container">
+      <div class="trace-header">
+        <span class="trace-char" id="traceChar">A</span>
+        <span class="trace-label" id="traceLabel">Trace the letter</span>
+      </div>
+      <div class="trace-canvas-wrap">
+        <canvas id="traceCanvas"></canvas>
+      </div>
+      <div class="trace-colors" id="traceColors"></div>
+      <div class="trace-actions">
+        <button class="nav-btn" onclick="clearTrace()"><span data-i18n="clear">Clear</span></button>
+        <button class="speak-btn" onclick="saveTrace()"><span data-i18n="save">Save</span></button>
       </div>
     </div>
   </div>
